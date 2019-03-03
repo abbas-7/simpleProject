@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+    <h1>Welcome to Social Web Site!</h1>
+    <h2>Great Platform to Discuss Variety of Topics</h2>
+
+
+    {% if not user.is_authenticated %}
+    <h2>Login or Sign-up for free to get started!</h2>
+
+    <div style="margin:0%;text-align: left"class="container">
+        <h1>Login</h1>
+        <form style="text-align:left;display: inline-block;width:25%" method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <input type="submit"  value="Login" class="btn btn-default">
+            <a href="{% url 'accounts:signup' %}"><input type="button" value="Sign Up" class="btn btn-primary"></a>
+        </form>
+    </div>
+    {% endif %}
+{% endblock %}
